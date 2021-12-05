@@ -20,18 +20,20 @@ this.marks.push(mark);
 
 Student.prototype.addMarks = function(...marks) {
   if ( this.marks === undefined) {
-this.marks = [marks]; 
-} else {
-  this.marks.push(marks);
+  this.marks = [marks]; 
+} 
+else {
+  this.marks = this.marks.concat (marks); //
 }
 }
+
 Student.prototype.getAverage = function() {
   let sum = 0;
    for (let i = 0 ; i < this.marks.length; i++) {
      sum = sum + this.marks [i];
    }
-     this.getAverage = +(sum / this.marks.length).toFixed(4);
-     return this.getAverage;
+     this.getAverage = Number(sum / this.marks.length).toFixed(4);
+    // return this.getAverage;
 }
 
 Student.prototype.exclude = function(reason) {
@@ -44,9 +46,8 @@ student1.setSubject("Algebra");
 student1.addMark(5);
 student1.addMark(4);
 student1.addMark(5);
-console.log(student1.getAverage()); //4.6666
+student1.addMarks(5, 5);
 console.log(student1);
-//console.log(student1.marks);
 
 let student2 = new Student("Buzz", "female", 35);
 student2.setSubject("Geometry");
