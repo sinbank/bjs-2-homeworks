@@ -16,6 +16,7 @@ this.marks = [mark];
 } else {
 this.marks.push(mark); 
 }
+return this.marks;
 }
 
 Student.prototype.addMarks = function(...marks) {
@@ -25,6 +26,7 @@ Student.prototype.addMarks = function(...marks) {
 else {
   this.marks = this.marks.concat (marks); //
 }
+return this.marks;
 }
 
 Student.prototype.getAverage = function() {
@@ -32,8 +34,9 @@ Student.prototype.getAverage = function() {
    for (let i = 0 ; i < this.marks.length; i++) {
      sum = sum + this.marks [i];
    }
-     this.getAverage = Number(sum / this.marks.length).toFixed(4);
-    // return this.getAverage;
+     this.getAverage = sum / this.marks.length;
+     this.getAverage = Number(this.getAverage).toFixed(4);
+     return this.getAverage;
 }
 
 Student.prototype.exclude = function(reason) {
@@ -47,6 +50,7 @@ student1.addMark(5);
 student1.addMark(4);
 student1.addMark(5);
 student1.addMarks(5, 5);
+console.log(student1.getAverage()); //4.6666
 console.log(student1);
 
 let student2 = new Student("Buzz", "female", 35);
